@@ -12,7 +12,8 @@ export default function Home() {
 
   const getBusca = async (busca: String, plataforma: String) => {
     const response = await fetch(
-      `http://localhost:8000/${plataforma}?busca=${busca}`
+      // `http://localhost:8000/${plataforma}?busca=${busca}`
+      `https://porti-api.onrender.com/${plataforma}?busca=${busca}`
     );
     const data = await response.json();
     if (data !== null) {
