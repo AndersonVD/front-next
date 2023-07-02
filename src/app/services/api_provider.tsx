@@ -1,34 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { CardContend } from "@/app/types/card";
 
-type CardContend = {
-  id: number;
-  title: String;
-  // price: String | null; TODO:1 Reativar os itens extrar quando criar o ternário
-  // time_ago: String | null;
-  image: String;
-  link: String;
-};
-
-function ApiResults() {
-  const [data, setData] = useState<CardContend[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios.get("http://localhost:8000/meli");
-        setData(result.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+export default function ApiResults({ data }: { data: CardContend[] }) {
   return (
     // Cria o componente a ser utilizado para o card.
     <div className="flex-auto  justify-center">
@@ -59,16 +34,6 @@ function ApiResults() {
           </div>
         </>
       ))}
-    </div>
-  );
-}
-
-export default function MyPage() {
-  return (
-    <div>
-      {/* Other components or JSX */}
-      <ApiResults />
-      {/* Other components or JSX */}
     </div>
   );
 }
